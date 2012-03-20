@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>HTTP en un coup d'oeil</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<link rel="stylesheet" type="text/css" href="../css/reset.css">
+		<link rel="stylesheet" type="text/css" href="../css/main.css">
+	</head>
+	<body>
+		<div>
+		<section>
+		<h1>HTTP en un coup d'oeil</h1>
+		<p>
+		  Beaucoup de développeurs Web utilisant HTTP ne connaissent pas vraiment
+      le protocole en lui-même. Ce site fournit une explication de base du
+      protocole HTTP 1.1 afin de faciliter le développement d'applications qui
+      utilisent HTTP.
+		</p>
+		</section>
+		<section class="disclaimer">
+		  Cette "explication de HTTP" est un résumé incomplet, simplifié mais
+      lisible de la <a
+      href="http://greenbytes.de/tech/webdav/rfc2616.html">spécification
+      complète</a>.
+		</section>
+		<section class="disclaimer">
+      La spécification HTTP va bientôt être remplacée par plusieurs documents.
+      Pour plus d'informations, vous pouvez visiter le wiki du <a
+      href="http://trac.tools.ietf.org/wg/httpbis/trac/wiki">groupe de travail
+      HTTPbis</a>.
+		</section>
+		<section class="given">
+		<header><h2>Étant donné</h2></header>
+		<p>
+			Une
+			<a href="http://fr.wikipedia.org/wiki/Uniform_Resource_Locator">URL</a>,
+			<a href="http://fr.wikipedia.org/wiki/Uniform_Resource_Identifier">URI</a> or
+			<a href="http://fr.wikipedia.org/wiki/Internationalized_Resource_Identifier">IRI</a>,
+			que l'on appelle resource, avec le
+			<a href="http://fr.wikipedia.org/wiki/Sch%C3%A9ma_d%27URI">schéma</a>
+			<code>http</code>.
+		</p>
+		<h3>Exemple</h3>
+		</section>
+		<section class="example">
+		<p>
+			<strong>http</strong>://example.com<br/>
+			<strong>http</strong>://www.google.com/?q=http<br/>
+			<strong>http</strong>://example.org/à-propos/mère
+		</p>
+		</section>
+		<section class="capabilities">
+		<header><h2>avec les capacités suivantes</h2></header>
+		<ul>
+			<li>
+				<img src="../images/icons/get.png" alt="" />
+				<div>
+				<h3>GET</h3>
+				<p>
+					Avec la méthode <code>GET</code> vous pouvez
+          <strong>récupérer</strong> le contenu d'une resource.
+				</p>
+				</div>
+			</li>
+			<li>
+				<img src="../images/icons/put.png" alt="" />
+				<div>
+				<h3>PUT</h3>
+				<p>
+					Avec la méthode <code>PUT</code> vous pouvez
+					<strong>créer</strong> une nouvelle resource ou
+					<strong>remplacer</strong> le contenu d'une resource existante.
+				</p>
+				</div>
+			</li>
+			<li>
+				<img src="../images/icons/post.png" alt="" />
+				<div>
+				<h3>POST</h3>
+				<p>
+					Avec la méthode <code>POST</code> vous pouvez
+          <strong>envoyer</strong> des données destinées à être traitées par
+          la resource en question.
+				</p>
+				</div>
+			</li>
+			<li>
+				<img src="../images/icons/delete.png" alt="" />
+				<div>
+				<h3>DELETE</h3>
+				<p>
+					Avec la méthode <code>DELETE</code> vous pouvez
+					<strong>supprimer</strong> une resource.
+				</p>
+				</div>
+			</li>
+			<li>
+				<img src="../images/icons/head.png" alt="" />
+				<div>
+				<h3>HEAD</h3>
+				<p>
+					Avec la méthode <code>HEAD</code> vous pouvez
+          <strong>vérifier</strong> l'état d'une ressource. Cette méthode est
+          identique à la méthode <code>GET</code>, mais elle ne retourne aucun
+          contenu.
+				</p>
+				</div>
+			</li>
+			<li>
+				<img src="../images/icons/options.png" alt="" />
+				<div>
+				<h3>OPTIONS</h3>
+				<p>
+					Avec la méthode <code>OPTIONS</code> vous pouvez
+          <strong>visualiser</strong> les fonctionnalités offertes par une
+          ressource.
+				</p>
+				</div>
+			</li>
+		</ul>
+		</section>
+		<section class="responses">
+		<header><h2>avec les réponses suivantes</h2></header>
+		<ul>
+			<li>
+				<img src="../images/icons/successful.png" alt="" />
+				<div>
+				<h3><strong>200</strong> - Succès</h3>
+				<p>
+				Une réponse dont le statut est compris entre <strong>200</strong> et
+        <strong>299</strong> signifie que la requête a été
+        <strong>réussie</strong>.
+				</p>
+				</div>
+			</li>
+			<li>
+				<img src="../images/icons/redirection.png" alt="" />
+				<div>
+				<h3><strong>300</strong> - Redirection</h3>
+				<p>
+				Une réponse dont le statut est compris entre <strong>300</strong> et
+        <strong>399</strong> signifie que la requête doit être envoyée sur
+        une <strong>autre resource</strong>.
+				</p>
+				</div>
+			</li>
+			<li>
+				<img src="../images/icons/badrequest.png" alt="" />
+				<div>
+				<h3><strong>400</strong> - Erreur client</h3>
+				<p>
+				Une réponse dont le statut est compris entre <strong>400</strong> et
+        <strong>499</strong> signifie que la requête envoyée par le client
+        était <strong>malformée</strong>.
+				</p>
+				</div>
+			</li>
+			<li>
+				<img src="../images/icons/servererror.png" alt="" />
+				<div>
+				<h3><strong>500</strong> - Erreur serveur</h3>
+				<p>
+				Une réponse dont le statut est compris entre <strong>500</strong> et
+        <strong>599</strong> signifie que la requête n'a pas pu être traitée
+        à cause d'une erreur côté serveur.
+				</p>
+				</div>
+			</li>
+		</ul>
+		</section>
+		<section>
+			<header><h2>Maintenant vous savez</h2></header>
+			<p>
+			  Maintenant que vous en savez un peu plus sur HTTP 1.1, vous pouvez creuser un peu plus.
+			</p>
+			<ul>
+				<li>Commencez à développer de
+				<a href="http://roy.gbiv.com/untangled/2008/rest-apis-must-be-hypertext-driven">vraies</a>
+				architectures
+				<a href="http://en.wikipedia.org/wiki/Representational_state_transfer">RESTful</a>
+				</li>
+				<li>
+				  Réfléchissez à votre usage des requêtes HTTP dans vos projets passés, et comment vous pourriez vous améliorer
+				</li>
+				<li>Creusez un peu plus la
+				<a href="http://greenbytes.de/tech/webdav/rfc2616.html">spécification HTTP 1.1</a>
+				et apprenez-en un peu plus à propos des
+				<a href="http://greenbytes.de/tech/webdav/rfc2616.html#header.fields">entêtes ("headers")</a>
+				et tous les
+				<a href="http://greenbytes.de/tech/webdav/rfc2616.html#status.codes">codes de retour ("status codes")</a>
+				et les
+				<a href="http://greenbytes.de/tech/webdav/rfc2616.html#method.definitions">méthodes</a>
+				que nous n'avons pas mentionnées ici
+				</li>
+			</ul>
+		</section>
+		</div>
+		<footer>
+			<h2>Ce site est disponible dans les langues suivantes :</h2>
+			<p>
+			<a href="fr/">Français</a>,
+			<a href="de/">Deutsch</a>,
+			<a href=".">English</a>
+			</p>
+			<p>
+			<strong>
+			Vous pouvez nous aider en traduisant ce site dans d'autres langues, et en envoyant une
+			<a href="http://help.github.com/send-pull-requests/">pull-request</a>
+			sur Github !
+			</strong>
+			</p>
+			<p style="min-height:2em;">
+			<a rel="license" href="http://creativecommons.org/licenses/by/3.0/">
+			<img alt="Licence Creative Commons" style="border-width:0;
+			float:left; margin-right: 1em;"
+			src="http://i.creativecommons.org/l/by/3.0/88x31.png" />
+			</a>
+			Ce travail est sous licence <a rel="license"
+			href="http://creativecommons.org/licenses/by/3.0/">
+			Creative Commons Attribution 3.0 Unported License</a>.
+			</p>
+			<p>
+			Icônes de
+			<a href="http://www.iconfinder.com/search/?q=iconset%3Abrightmix">Brightmix icon set</a>
+			réalisées par
+			<a href="http://www.brightmix.com/">Brightmix</a>
+			sous licence
+			<a href="http://en.wikipedia.org/wiki/WTFPL">WTFPL</a>. 
+			Traduction par <a href="http://crohr.me">Cyril Rohr</a>.
+			</p>
+			<p>
+			<a href="imprint.html">Imprint</a>
+			</p>
+		</footer>
+		<a href="http://github.com/semfact/httpataglance">
+		<img style="position: absolute; top: 0; right: 0; border: 0;"
+		src="https://a248.e.akamai.net/assets.github.com/img/4c7dc970b89fd04b81c8e221ba88ff99a06c6b61/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f77686974655f6666666666662e706e67"
+		alt="Fork me on GitHub">
+		</a>
+	</body>
+</html>
